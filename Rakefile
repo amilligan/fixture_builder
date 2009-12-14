@@ -1,17 +1,10 @@
 require 'rake'
-require 'rake/testtask'
 require 'rake/rdoctask'
 
-desc 'Default: run unit tests.'
-task :default => :test
+load File.join(File.dirname(__FILE__), 'tasks', 'rspec.rake')
 
-desc 'Test the fixture_builder plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
+desc 'Default: run unit tests.'
+task :default => :spec
 
 desc 'Generate documentation for the fixture_builder plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
